@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from 'cors';
-import authRoutes from "./routes/auth.route.js";
+import userAuthRoutes from "./routes/userAuth.route.js";
 
 dotenv.config();
 
@@ -20,6 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({ credentials: true }));
 
+app.use("/api/user/auth", userAuthRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
