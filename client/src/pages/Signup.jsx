@@ -26,7 +26,7 @@ const SignUp = () => {
         "http://localhost:3000/api/user/auth/signup",
         formData
       );
-      const data = res.data; // Simplified
+      const data = res.data;
       console.log(data);
       setLoading(false);
       if (data.success === false) {
@@ -48,6 +48,7 @@ const SignUp = () => {
           type="text"
           placeholder="Username"
           id="username"
+          required
           value={formData.username}
           className="bg-slate-200 p-3 rounded-lg"
           onChange={handleChange}
@@ -56,6 +57,7 @@ const SignUp = () => {
           type="email"
           placeholder="Email"
           id="email"
+          required
           value={formData.email}
           className="bg-slate-200 p-3 rounded-lg"
           onChange={handleChange}
@@ -64,10 +66,16 @@ const SignUp = () => {
           type="password"
           placeholder="Password"
           id="password"
+          required
           value={formData.password}
           className="bg-slate-200 p-3 rounded-lg"
           onChange={handleChange}
         />
+        <select className="bg-slate-200 p-3 rounded-lg" id="role" onChange={handleChange}>
+          <option value="">Select Role</option>
+          <option value="admin">Admin</option>
+          <option value="user">User</option>
+        </select>
         <button
           disabled={loading}
           type="submit"
