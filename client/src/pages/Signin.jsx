@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Login from "../components/Login";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
@@ -66,11 +67,15 @@ const SignIn = () => {
           {loading ? "loading..." : "sign in"}
         </button>
       </form>
-      <div className="flex gap-3 mt-5">
+      <div className="flex gap-3 mt-5 items-center space-between justify-center">
+        <div className="flex gap-3">
         <p>Dont have an account?</p>
-        <Link to="/sign-up">
-          <span className="text-blue-500">Sign up</span>
+        <Link to="/sign-in">
+          <span className="text-blue-500">Sign up </span>
         </Link>
+        </div>
+        <span> or</span>
+        <Login/>
       </div>
       <p className="text-red-700 mt5">{error && "Something went wrong"}</p>
     </div>
